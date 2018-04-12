@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar color="myheader">
+    <ion-title>
+      Videos
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content > <!-- class="pagebackgroundBG" > -->    <!-- class="pagebackground" -->
+<ion-refresher (ionRefresh)="fndoRefresh($event)">
+    <ion-refresher-content>Refresh</ion-refresher-content>
+</ion-refresher>
+
+ <div> <!-- class="pagebackgroundBG"> -->
+
+<ion-card *ngFor="let data of datas">
+<ion-item>
+
+    <img src="{{data.snippet.thumbnails.medium.url}}"/>
+    <div class="card-title" (click)="openPlaylist(data.id)">
+    <h1>{{data.snippet.title}}</h1>
+    </div>
+ </ion-item>
+  
+  </ion-card>
+ 
+
+  <ion-infinite-scroll (ionInfinite)="infiniteScrool($event)">
+  <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</div>
+</ion-content>
